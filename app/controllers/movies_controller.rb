@@ -7,7 +7,14 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    logger.debug params[:sort]
+    if params[:sort] == "by_title"
+      @movies = Movie.find(:all, :order => "title")
+    elsif params[:sort] == "by_date"
+      @movies = Movie.find(:all, :order => "release_date")
+    else
+      @movies = Movie.all
+    end
   end
 
   def new

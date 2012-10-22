@@ -5,10 +5,12 @@
   %thead
     %tr
       %th 
-        %a#title_header Movie Title 
+        %a#title_header 
+          = link_to 'Movie Title', :controller =>"movies", :sort=>"by_title" 
       %th Rating
       %th 
-        %a#release_date_header Release Date
+        %a#release_date_header 
+          = link_to 'Release Date', :controller =>"movies", :sort=>"by_date" 
       %th More Info
   %tbody
     - @movies.each do |movie|
