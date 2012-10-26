@@ -5,10 +5,10 @@
   %thead
     %tr
       %th{:class=>(@sort == 'by_title')?'hilite':''} 
-        = link_to 'Movie Title', :controller =>"movies", :sort=>"by_title", :id=> 'title_header'       
+        = link_to 'Movie Title', {:controller =>"movies", :sort=>"by_title"}, :id=> 'title_header'       
       %th Rating
       %th{:class=>(@sort == 'by_date')?'hilite':''} 
-        = link_to 'Release Date', :controller =>"movies", :sort=>"by_date", :id=>'release_date_header' 
+        = link_to 'Release Date', {:controller =>"movies", :sort=>"by_date"}, :id=>'release_date_header' 
       %th More Info
   %tbody
     - @movies.each do |movie|
