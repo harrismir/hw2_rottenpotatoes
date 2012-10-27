@@ -21,7 +21,6 @@ class MoviesController < ApplicationController
       inter_result = Movie.all
     end
 
-  
     @sort = params[:sort] 
 
     if params[:sort] == "by_title"
