@@ -6,9 +6,13 @@ class MoviesController < ApplicationController
     #will render app/views/movies/show.<extension> by default
   end
 
+  def show_or_not(rating)
+    1==1
+  end
   def index
     if params.has_key?(:ratings) 
       @selected_keys = params[:ratings].keys
+      @keys_string = @selected_keys.join(",")
 
       #if @selected_keys.length > 0 
         conds = []
@@ -18,6 +22,7 @@ class MoviesController < ApplicationController
         conds = conds.join(' or ')
         inter_result = Movie.all(:conditions => conds)
     else
+      @keys_string = ""
       inter_result = Movie.all
     end
 

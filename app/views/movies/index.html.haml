@@ -1,10 +1,11 @@
 -#  This file is app/views/movies/index.html.haml
 %h1 All Movies
+= logger.debug @selected_keys
 = form_tag movies_path, :method => :get, :id=>'ratings_form' do
   Include:
   = ['G', 'PG', 'PG-13', 'R'].each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", 1, (@selected_keys.include? rating)
+    = check_box_tag "ratings[#{rating}]", 1, (@keys_string.include? rating)
   = submit_tag 'Refresh', :id => 'ratings_submit'
 %table#movies
   %thead
