@@ -7,13 +7,30 @@ class MoviesController < ApplicationController
   end
 
   def index
+    if params.has_key?(:ratings) 
+      @selected_keys = params[:ratings].keys
+
+      #if @selected_keys.length > 0 
+        conds = []
+        @selected_keys.each do |k|
+          conds << [ "rating = '" + k+"'"]
+        end
+        conds = conds.join(' or ')
+        inter_result = Movie.all(:conditions => conds)
+    else
+      inter_result = Movie.all
+    end
+
+  
     @sort = params[:sort] 
+
     if params[:sort] == "by_title"
       @movies = Movie.find(:all, :order => "title")
     elsif params[:sort] == "by_date"
       @movies = Movie.find(:all, :order => "release_date")
     else
       @movies = Movie.all
+      @movies = inter_result
     end
   end
 
