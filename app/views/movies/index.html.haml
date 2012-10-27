@@ -5,7 +5,7 @@
   Include:
   = ['G', 'PG', 'PG-13', 'R'].each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", 1, (@keys_string.include? rating)
+    = check_box_tag "ratings[#{rating}]", 1, (@keys_string=="" ? true : (@keys_string.include? rating))
   = submit_tag 'Refresh', :id => 'ratings_submit'
 %table#movies
   %thead
